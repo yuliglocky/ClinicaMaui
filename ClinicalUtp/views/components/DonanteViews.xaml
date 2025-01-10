@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ClinicalUtp.views.components.DonanteViews"
+             xmlns:vm="clr-namespace:ClinicalUtp.ViewModels">
+
+    <VerticalStackLayout Padding="10" Spacing="20">
+        <!-- Título de la sección -->
+        <Frame Padding="10"
+               BackgroundColor="#024F55"
+               HeightRequest="60"
+               CornerRadius="20"
+               BorderColor="#024F55"
+               HasShadow="True"
+               HorizontalOptions="FillAndExpand"
+               VerticalOptions="Center">
+            <HorizontalStackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                <!-- Imagen a la izquierda -->
+                <Image Source="donantes.png" 
+                       WidthRequest="40" 
+                       HeightRequest="40" 
+                       Aspect="AspectFit"
+                       VerticalOptions="Center" />
+
+                <!-- Título en el centro -->
+                <Label Text="Lista de Donantes" 
+                       FontSize="20" 
+                       FontAttributes="Bold" 
+                       TextColor="White"
+                       HorizontalOptions="CenterAndExpand"
+                       VerticalOptions="Center" />
+            </HorizontalStackLayout>
+        </Frame>
+
+        <!-- CollectionView con scroll horizontal -->
+        <CollectionView x:Name="PacientesCollectionView"
+                        ItemsSource="{Binding Pacientes}"
+                        SelectionMode="Single"
+                        SelectedItem="{Binding SelectedDonante}"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand">
+            <!-- Configuración del LinearItemsLayout con scroll horizontal -->
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Horizontal"
+                                   ItemSpacing="10" />
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <!-- Frame para cada donante -->
+                    <Frame Padding="10" 
+                           CornerRadius="10"
+                           HasShadow="True"
+                           HeightRequest="180" 
+                           BackgroundColor="#D5F2F8"
+                           BorderColor="Transparent"
+                           WidthRequest="180"
+                           Margin="10">
+                        <VerticalStackLayout Spacing="10" 
+                                             HorizontalOptions="Fill" 
+                                             VerticalOptions="Center">
+                            <!-- Imagen del donante -->
+                            <Image Source="donantes.png" 
+                                   WidthRequest="50" 
+                                   HeightRequest="50" 
+                                   Aspect="AspectFit" 
+                                   HorizontalOptions="Center" />
+                            <!-- Nombre del donante -->
+                            <Label Text="{Binding Name}" 
+                                   FontSize="14" 
+                                   TextColor="#024F55" 
+                                   HorizontalOptions="Center" />
+                            <!-- Tipo de sangre del donante -->
+                            <Label Text="{Binding Blood}" 
+                                   FontSize="12" 
+                                   TextColor="Red" 
+                                   HorizontalOptions="Center" />
+                            <!-- Botón para añadir donación -->
+                            <Button Text="Añadir Donación" 
+                                    BackgroundColor="#198B89" 
+                                    TextColor="White" 
+                                    CornerRadius="8" 
+                                    Padding="10" 
+                                    FontAttributes="Bold" 
+                                    HorizontalOptions="Center" 
+                                    Clicked="OnAddDonationClicked" />
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentView>

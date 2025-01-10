@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ClinicalUtp.views.AppointmentViews"
+              Background="#60198B89">
+
+  
+
+    <Grid>
+        
+        
+           <!-- Banner estático en la parte superior -->
+        <Grid Background="#09302F" HeightRequest="80"   WidthRequest="700" VerticalOptions="Start" Padding="10"
+            >
+       
+            <Image Source="user.png" HeightRequest="40" WidthRequest="40" VerticalOptions="Center" HorizontalOptions="Start" />
+
+            <!-- Nombre de usuario centrado -->
+            <Label x:Name="UserNameLabel" 
+                   Text="Nombre de Usuario" 
+                   FontSize="18" 
+                   TextColor="White" 
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Center" />
+
+            <!-- Botón de cerrar a la derecha -->
+            <Button Text="Cerrar" 
+                    TextColor="White" 
+                    BackgroundColor="#3C949E" 
+                    Clicked="OnClosePage" 
+                    VerticalOptions="Center" 
+                    HorizontalOptions="End" />
+
+          
+        </Grid>
+
+
+        
+
+       
+        <!-- Contenedor principal con fondo blanco centrado -->
+        <Grid Background="#F6EEC6" 
+              VerticalOptions="Center" 
+              HorizontalOptions="Center" 
+              WidthRequest="700" 
+              HeightRequest="600">
+
+         
+
+
+            
+            <!-- Contenido principal con desplazamiento -->
+            <ScrollView>
+                <VerticalStackLayout Padding="10" Spacing="20">
+
+                  
+
+                        <!-- Información de la Cita -->
+                        <CollectionView ItemsSource="{Binding AppointmentDetails}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <!-- Contenedor con bordes -->
+                                    <Frame CornerRadius="8" 
+                                      
+                                            
+                                       Padding="10" 
+                                       Margin="5" 
+                                            BorderColor="Transparent" 
+                                       BackgroundColor="#3C949E" 
+                                       HasShadow="True">
+                                        <Grid ColumnDefinitions="Auto, *, Auto, *" 
+                                          RowDefinitions="Auto, Auto, Auto, Auto" 
+                                          Padding="8" 
+                                          ColumnSpacing="10" 
+                                          RowSpacing="5">
+
+                                            <!-- Paciente -->
+                                            <Image Source="user.png" 
+                                               Grid.Row="0" Grid.Column="0" 
+                                               HeightRequest="20" WidthRequest="20" 
+                                               VerticalOptions="Center" />
+                                            <Label Text="Paciente:" 
+                                               FontSize="14" 
+                                               FontAttributes="Bold" 
+                                               TextColor="#1C5E52"  
+                                                Grid.Row="0" Grid.Column="1" 
+                                               VerticalOptions="Center" />
+                                                <Label Text="{Binding UserName}" 
+                                               FontSize="14" 
+                                               TextColor= "#024F55"
+                                               Grid.Row="0" Grid.Column="2" 
+                                               VerticalOptions="Center" 
+                                               Grid.ColumnSpan="2" />
+
+                                                <!-- Razón -->
+                                                <Image Source="citas.png" 
+                                               Grid.Row="1" Grid.Column="0" 
+                                               HeightRequest="20" WidthRequest="20" 
+                                               VerticalOptions="Center" />
+                                                <Label Text="Razón:" 
+                                               FontSize="14" 
+                                               FontAttributes="Bold" 
+                                               TextColor="#1C5E52"  
+                                                    Grid.Row="1" Grid.Column="1" 
+                                               VerticalOptions="Center" />
+                                                    <Label Text="{Binding Reason}" 
+                                               FontSize="14" 
+                                               TextColor="White" 
+                                               Grid.Row="1" Grid.Column="2" 
+                                               VerticalOptions="Center" 
+                                               Grid.ColumnSpan="2" />
+
+                                                    <!-- Fecha -->
+                                                    <Image Source="agenda.png" 
+                                               Grid.Row="2" Grid.Column="0" 
+                                               HeightRequest="20" WidthRequest="20" 
+                                               VerticalOptions="Center" />
+                                                    <Label Text="Fecha:" 
+                                               FontSize="14" 
+                                               FontAttributes="Bold" 
+                                               TextColor="#1C5E52"  
+                                                        Grid.Row="2" Grid.Column="1" 
+                                               VerticalOptions="Center" />
+                                                        <Label Text="{Binding AppointmentDate}" 
+                                               FontSize="14" 
+                                               TextColor="White" 
+                                               Grid.Row="2" Grid.Column="2" 
+                                               VerticalOptions="Center" 
+                                               Grid.ColumnSpan="2" />
+
+                                                        <!-- Notas -->
+                                                        <Image Source="citas.png" 
+                                               Grid.Row="3" Grid.Column="0" 
+                                               HeightRequest="20" WidthRequest="20" 
+                                               VerticalOptions="Center" />
+                                                        <Label Text="Notas:" 
+                                               FontSize="14" 
+                                               FontAttributes="Bold" 
+                                               TextColor="#1C5E52"  
+                                                            Grid.Row="3" Grid.Column="1" 
+                                               VerticalOptions="Center" />
+                                                            <Label Text="{Binding Notes}" 
+                                               FontSize="14" 
+                                               TextColor="White" 
+                                               Grid.Row="3" Grid.Column="2" 
+                                               VerticalOptions="Center" 
+                                               Grid.ColumnSpan="2" />
+                                        </Grid>
+                                    </Frame>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+
+                        <!-- Mediciones del paciente -->
+                        <VerticalStackLayout Spacing="10">
+                            <Label Text="Peso (kg):" TextColor="#1C5E52" />
+                            <!-- Oscuro -->
+                            <!-- Cambiar el color de fondo para ocultar el borde -->
+                            <Entry x:Name="WeightEntry" Keyboard="Numeric" BackgroundColor="#A1C6C0" TextColor="#1C5E52" />
+                            <!-- Claro Fondo, Oscuro Texto -->
+
+                            <Label Text="Altura (cm):" TextColor="#1C5E52" />
+                            <!-- Oscuro -->
+                            <Entry x:Name="HeightEntry" Keyboard="Numeric" BackgroundColor="#A1C6C0" TextColor="#1C5E52" />
+                            <!-- Claro Fondo, Oscuro Texto -->
+
+                            <Label Text="Temperatura (°C):" TextColor="#1C5E52" />
+                            <!-- Oscuro -->
+                            <Entry x:Name="TemperatureEntry" Keyboard="Numeric" BackgroundColor="#A1C6C0" TextColor="#1C5E52" />
+                            <!-- Claro Fondo, Oscuro Texto -->
+
+                            <Label Text="Presión Arterial (mmHg):" TextColor="#1C5E52" />
+                            <!-- Oscuro -->
+                            <Entry x:Name="BloodPressureEntry" Keyboard="Numeric" BackgroundColor="#A1C6C0" TextColor="#1C5E52" />
+                            <!-- Claro Fondo, Oscuro Texto -->
+
+                            <Label Text="Frecuencia Cardiaca (bpm):" TextColor="#1C5E52" />
+                            <!-- Oscuro -->
+                            <Entry x:Name="HeartRateEntry" Keyboard="Numeric" BackgroundColor="#A1C6C0" TextColor="#1C5E52" />
+                            <!-- Claro Fondo, Oscuro Texto -->
+                        </VerticalStackLayout>
+
+                        <!-- Picker para seleccionar la medicina -->
+                        <Label Text="Seleccionar Medicina:" 
+                           FontSize="18" 
+                           FontAttributes="Bold" 
+                           TextColor="#1C5E52" />
+                        <!-- Oscuro -->
+                        <Picker x:Name="MedicinesPicker"
+                            Title="Seleccionar Medicina"
+                            ItemDisplayBinding="{Binding Name}"
+                            SelectedIndexChanged="MedicinesPicker_SelectedIndexChanged" 
+                            BackgroundColor="#A1C6C0" TextColor="#1C5E52" />
+                        <!-- Claro Fondo, Oscuro Texto -->
+
+                        <!-- Cantidad de medicina -->
+                        <Label Text="Cantidad (dosis):" 
+                           FontSize="18" 
+                           FontAttributes="Bold" 
+                           TextColor="#1C5E52" />
+                        <!-- Oscuro -->
+                        <Entry x:Name="QuantityEntry" 
+                           Placeholder="Ingrese la cantidad" 
+                           Keyboard="Numeric" 
+                           
+                           BackgroundColor="#A1C6C0" 
+                           TextColor="#1C5E52" />
+                    <Button Text="Añadir Medicamento" 
+                  Clicked="OnSubmitMedicine"
+                        BackgroundColor="#3C949E" 
+        TextColor="White" 
+         FontAttributes="Bold"
+        HorizontalOptions="Center" 
+        VerticalOptions="Center" />
+
+                    <!-- Otros datos -->
+                        <VerticalStackLayout Spacing="10">
+                            <Label Text="Motivo de la Referencia:" TextColor="#1C5E52" />
+                            <!-- Oscuro -->
+                            <Entry x:Name="ReasonEntry" BackgroundColor="#A1C6C0" TextColor="#1C5E52" />
+                            <!-- Claro Fondo, Oscuro Texto -->
+
+                            <Label Text="Diagnóstico:" TextColor="#1C5E52" />
+                            <!-- Oscuro -->
+                            <Entry x:Name="DiagnosisEntry" BackgroundColor="#A1C6C0" TextColor="#1C5E52" />
+                            <!-- Claro Fondo, Oscuro Texto -->
+
+                            <Label Text="Sugerencias del Doctor:" TextColor="#1C5E52" />
+                            <!-- Oscuro -->
+                            <Entry x:Name="DoctorSuggestionsEntry" BackgroundColor="#A1C6C0" TextColor="#1C5E52" />
+                            <!-- Claro Fondo, Oscuro Texto -->
+
+                            <Label Text="Fecha de Seguimiento:" TextColor="#1C5E52" />
+                            <!-- Oscuro -->
+                            <DatePicker x:Name="FollowUpDatePicker" />
+
+                            <Label Text="Especialidad:" TextColor="#1C5E52" />
+                            <!-- Oscuro -->
+                            <Picker x:Name="SpecialtyPicker" Title="Seleccione la especialidad"
+                                BackgroundColor="#A1C6C0" TextColor="#1C5E52">
+                                <!-- Claro Fondo, Oscuro Texto -->
+                                <Picker.Items>
+                                    <x:String>Cardiología</x:String>
+                                    <x:String>Dermatología</x:String>
+                                    <x:String>Neurología</x:String>
+                                    <x:String>Ginecología</x:String>
+                                    <x:String>Pediatría</x:String>
+                                </Picker.Items>
+                            </Picker>
+                        </VerticalStackLayout>
+
+                        <!-- Botón para enviar los datos -->
+                        <Button Text="Enviar Todo" 
+                            Clicked="OnSubmitAllData" 
+                            BackgroundColor="Green" 
+                            TextColor="White" />
+                </VerticalStackLayout>
+            </ScrollView>
+        </Grid>
+    </Grid>
+
+</ContentPage>
+

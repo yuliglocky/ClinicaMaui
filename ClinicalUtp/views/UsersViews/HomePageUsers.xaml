@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ClinicalUtp.views.UsersViews.HomePageUsers"
+                       Background="White"
+             Shell.NavBarIsVisible="False">
+    <Grid>
+        <!-- Header -->
+        <Grid BackgroundColor="White" Padding="10" VerticalOptions="Start">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <!-- Para el botón del menú -->
+                <ColumnDefinition Width="*"/>
+                <!-- Para el banner -->
+            </Grid.ColumnDefinitions>
+
+            <!-- ImageButton del Menú -->
+            <ImageButton Source="menu.png" 
+                     Grid.Column="0"
+                     HorizontalOptions="Start" 
+                     VerticalOptions="Center" 
+                     Margin="10"
+                     WidthRequest="40" 
+                     HeightRequest="40"
+                     Clicked="OnMenuButtonClicked"/>
+
+            <!-- Banner con nombre del usuario y tipo de sangre -->
+            <StackLayout Grid.Column="1" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Padding="10">
+                <Label Text="Clinica Universitaria" 
+                   FontSize="18" 
+                   FontAttributes="Bold" 
+                   TextColor="Black"/>
+               
+            </StackLayout>
+        </Grid>
+
+        <!-- Contenido dinámico -->
+        <ContentView x:Name="DynamicContentArea" Margin="0,60,0,0">
+            <!-- Aquí va el contenido principal -->
+        </ContentView>
+
+        <!-- Menú Flyout -->
+        <Grid x:Name="FlyoutMenu"
+          BackgroundColor="#09302F"
+          Padding="20"
+          IsVisible="False" 
+          WidthRequest="250"
+          HorizontalOptions="Start"
+          VerticalOptions="FillAndExpand">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <!-- Para el botón cerrar -->
+                <RowDefinition Height="*"/>
+                <!-- Para el contenido del menú -->
+            </Grid.RowDefinitions>
+            <!-- Logo en el menú -->
+            <Image Source="logocli.png" 
+     HorizontalOptions="Start"
+     VerticalOptions="Start"
+     WidthRequest="40" 
+     HeightRequest="40" 
+     Margin="0,10,10,10"/>
+
+            <!-- Botón para cerrar el menú -->
+            <ImageButton Source="menu.png"
+                     Grid.Row="0"
+                     HorizontalOptions="End"
+                     VerticalOptions="Start"
+                     WidthRequest="30" 
+                     HeightRequest="30" 
+                     Margin="0,10,10,0"
+                     Clicked="OnCloseMenuButtonClicked"/>
+
+            <!-- Opciones del menú -->
+            <StackLayout Grid.Row="1">
+
+
+                <Button x:Name="BtnInicio" Text="Inicio" TextColor="White" BackgroundColor="Transparent" Clicked="Inicio"/>
+                <Button x:Name="BtnSolicitarCitas" Text="Solicitar citas" TextColor="White" BackgroundColor="Transparent" Clicked="AppointmentRegister"/>
+                <Button x:Name="BtnMisDonaciones" Text="Mis Donaciones" TextColor="White" BackgroundColor="Transparent" Clicked="DonacionesViews"/>
+                <Button x:Name="BtnMisReferencias" Text="Mis referencias" TextColor="White" BackgroundColor="Transparent" Clicked="ReferenciasViews"/>
+
+
+                <Button x:Name="BtnContacto" Text="Contactanos" TextColor="White" BackgroundColor="Transparent" Clicked="ContactoV"/>
+
+                <Button x:Name="BtnLogOut" Text="LogOut" TextColor="White" BackgroundColor="Transparent" Clicked="LogOut"/>
+            </StackLayout>
+        </Grid>
+    </Grid>
+</ContentPage>

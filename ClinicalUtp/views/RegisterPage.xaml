@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:ClinicalUtp.viewModels"
+             x:Class="ClinicalUtp.views.RegisterPage"
+             BackgroundColor="Transparent" >
+   <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#F1F9FB" Offset="0.1"/>
+            <GradientStop Color="#D5F2F8" Offset="0.5"/>
+            <GradientStop Color="#9BD8DB" Offset="0.7"/>
+            <GradientStop Color="#3C949E" Offset="1.0"/>
+        </LinearGradientBrush>
+    </ContentPage.Background>
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="15" VerticalOptions="Center" HorizontalOptions="Center">
+
+            <!-- Logo -->
+            <Image Source="logocli.png" 
+                   WidthRequest="100"
+                   HeightRequest="100"
+                   HorizontalOptions="Center" />
+            <!-- Título -->
+            <Label Text="Register"
+        FontSize="24"
+        HorizontalTextAlignment="Center"
+        TextColor="#024F55"
+        FontAttributes="Bold"/>
+
+            <!-- Nombre -->
+            <Frame BackgroundColor="#D5F2F8" BorderColor="Transparent" CornerRadius="25" Padding="10" HeightRequest="60" WidthRequest="300">
+                <Entry x:Name="nombreEntry" Placeholder="Ingrese su nombre" TextColor="#3C949E" BackgroundColor="Transparent" />
+            </Frame>
+
+            <!-- Correo Electrónico -->
+            <Frame BackgroundColor="#D5F2F8" BorderColor="Transparent" CornerRadius="25" Padding="10" HeightRequest="60" WidthRequest="300">
+                <Entry x:Name="emailEntry" Placeholder="Ingrese su correo electrónico" Keyboard="Email" TextColor="#3C949E" BackgroundColor="Transparent" />
+            </Frame>
+
+            <!-- DNI -->
+            <Frame BackgroundColor="#D5F2F8" BorderColor="Transparent" CornerRadius="25" Padding="10" HeightRequest="60" WidthRequest="300">
+                <Entry x:Name="dniEntry" Placeholder="Ingrese su DNI" Keyboard="Numeric" TextColor="#3C949E" BackgroundColor="Transparent"  TextChanged="OnDniTextChanged" />
+            </Frame>
+
+            <!-- Celular -->
+            <Frame BackgroundColor="#D5F2F8" BorderColor="Transparent" CornerRadius="25" Padding="10" HeightRequest="60" WidthRequest="300">
+                <Entry x:Name="cellphoneEntry" Placeholder="Ingrese su celular" TextColor="#3C949E" BackgroundColor="Transparent" TextChanged="OnCellphoneTextChanged" />
+            </Frame>
+
+            <!-- Fecha de nacimiento -->
+            <Frame BackgroundColor="#D5F2F8" BorderColor="Transparent" CornerRadius="25" Padding="10" HeightRequest="60" WidthRequest="300">
+                <DatePicker x:Name="birthdayPicker" TextColor="#3C949E" />
+            </Frame>
+
+            <!-- Dirección -->
+            <Frame BackgroundColor="#D5F2F8" BorderColor="Transparent" CornerRadius="25" Padding="10" HeightRequest="60" WidthRequest="300">
+                <Entry x:Name="addressEntry" Placeholder="Ingrese su dirección" TextColor="#3C949E" BackgroundColor="Transparent" />
+            </Frame>
+
+            <!-- Alergias -->
+            <Frame BackgroundColor="#D5F2F8" BorderColor="Transparent" CornerRadius="25" Padding="10" HeightRequest="60" WidthRequest="300">
+                <Entry x:Name="allergiesEntry" Placeholder="Ingrese sus alergias" TextColor="#3C949E" BackgroundColor="Transparent" />
+            </Frame>
+            <Label Text="Seleccionar Sexo" TextColor="#3C949E" />
+            <!-- Género (Picker) -->
+            <Frame BackgroundColor="#D5F2F8" BorderColor="Transparent" CornerRadius="25" Padding="10" HeightRequest="60" WidthRequest="300">
+              
+                <Picker x:Name="genderPicker" BackgroundColor="#D5F2F8" TextColor="#3C949E">
+                    <Picker.Items>
+                        <x:String>Masculino</x:String>
+                        <x:String>Femenino</x:String>
+                        <x:String>Otro</x:String>
+                    </Picker.Items>
+                </Picker>
+            </Frame>
+            <Label Text="Seleccionar Sangre" TextColor="#3C949E" />
+            <!-- Tipo de Sangre (Picker) -->
+            <Frame BackgroundColor="#D5F2F8" BorderColor="Transparent" CornerRadius="25" Padding="10" HeightRequest="60" WidthRequest="300">
+             
+                <Picker x:Name="bloodPicker" BackgroundColor="#D5F2F8" TextColor="#3C949E">
+                    <Picker.Items>
+                        <x:String>O+</x:String>
+                        <x:String>O-</x:String>
+                        <x:String>A+</x:String>
+                        <x:String>A-</x:String>
+                        <x:String>B+</x:String>
+                        <x:String>B-</x:String>
+                        <x:String>AB+</x:String>
+                        <x:String>AB-</x:String>
+                    </Picker.Items>
+                </Picker>
+            </Frame>
+
+            <!-- Donante (Switch) -->
+            <Frame BackgroundColor="#D5F2F8" BorderColor="Transparent" CornerRadius="25" Padding="10" HeightRequest="60" WidthRequest="300">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Label Text="¿Es Donante?" TextColor="#3C949E" VerticalOptions="Center" />
+                    <Switch x:Name="isDonorSwitch" VerticalOptions="Center" />
+                </StackLayout>
+            </Frame>
+
+            <!-- Contraseña -->
+            <Frame BackgroundColor="#D5F2F8" BorderColor="Transparent" CornerRadius="25" Padding="10" HeightRequest="60" WidthRequest="300">
+                <Entry x:Name="passwordEntry" Placeholder="Ingrese su contraseña" IsPassword="True" TextColor="#3C949E" BackgroundColor="Transparent" />
+            </Frame>
+
+            <!-- Botón de Registro -->
+            <Button Text="Registrar" 
+                    Clicked="OnRegisterButtonClicked" 
+                    BackgroundColor="#024F55" 
+                    TextColor="White" 
+                    WidthRequest="300" 
+                    HeightRequest="60" 
+                    CornerRadius="25" 
+                    FontAttributes="Bold"/>
+
+          
+
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

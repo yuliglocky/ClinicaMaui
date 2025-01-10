@@ -1,0 +1,89 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ClinicalUtp.views.ProfilePage"
+               BackgroundColor="Transparent">
+
+    
+    <!-- Fondo con degradado -->
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#3C949E" Offset="0.1"/>
+            <GradientStop Color="#9BD8DB" Offset="0.5"/>
+            <GradientStop Color="#D5F2F8" Offset="0.7"/>
+            <GradientStop Color="#F1F9FB" Offset="1.0"/>
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+   
+  
+    <ScrollView>
+        <VerticalStackLayout Padding="20" HorizontalOptions="Center" VerticalOptions="Center">
+
+
+            <!-- Picker para seleccionar doctor -->
+            <Label Text="Selecciona un Doctor:" 
+                   FontSize="Small"
+                   TextColor="#3C949E" 
+                   HorizontalOptions="Center" />
+            <Frame BackgroundColor="#D5F2F8" Padding="5" CornerRadius="10" HasShadow="False" BorderColor="Transparent" Margin="0,0,0,20">
+                <Picker x:Name="doctorPicker"
+                        Title="Selecciona un Doctor"
+                        SelectedIndexChanged="OnDoctorSelectedIndexChanged"
+                        BackgroundColor="#D5F2F8" 
+                        TextColor="#3C949E" />
+            </Frame>
+
+            <!-- DatePicker para la fecha de la cita -->
+            <Label Text="Fecha de la Cita:" 
+                   FontSize="Small"
+                   TextColor="#3C949E"
+                   HorizontalOptions="Center"/>
+            <Frame BackgroundColor="#D5F2F8" Padding="5" CornerRadius="10" HasShadow="False" BorderColor="Transparent" Margin="0,0,0,20">
+                <DatePicker x:Name="appointmentDatePicker"
+                            BackgroundColor="#D5F2F8"
+                            TextColor="#3C949E" />
+            </Frame>
+
+            <!-- Picker para la razón de la cita -->
+            <Label Text="Tipo de Consulta:" 
+                   FontSize="Small"
+                   TextColor="#3C949E"
+                   HorizontalOptions="Center"/>
+            <Frame BackgroundColor="#D5F2F8" Padding="5" CornerRadius="10" HasShadow="False" BorderColor="Transparent" Margin="0,0,0,20">
+                <Picker x:Name="ReasonPicker"
+                        Title="Selecciona un Tipo de Consulta"
+                        BackgroundColor="#D5F2F8" 
+                        TextColor="#3C949E">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Consulta Médica</x:String>
+                            <x:String>Examen Médico</x:String>
+                            <x:String>Pedido de Medicamentos</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </Frame>
+
+            <!-- Editor para notas adicionales -->
+            <Label Text="Notas adicionales:" 
+                   FontSize="Small"
+                   TextColor="#3C949E"
+                   HorizontalOptions="Center"/>
+            <Frame BackgroundColor="#D5F2F8" Padding="5" CornerRadius="10" HasShadow="False" BorderColor="Transparent" Margin="0,0,0,20">
+                <Editor x:Name="notesEditor"
+                        Placeholder="Añadir notas (opcional)"
+                        AutoSize="TextChanges"
+                        TextColor="#3C949E"/>
+            </Frame>
+
+            <!-- Botón para crear la cita -->
+            <Button Text="Crear Cita"
+                    BackgroundColor="#3C949E" 
+                    TextColor="White"
+                    WidthRequest="150"
+                    HeightRequest="40"
+                    HorizontalOptions="Center"
+                    Clicked="OnCreateAppointmentClicked" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

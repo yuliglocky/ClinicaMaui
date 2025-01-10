@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ClinicalUtp.views.components.Appointments"
+        BackgroundColor="Transparent">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20">
+
+            <!-- Título Principal -->
+            <Label
+            Text="Solicitar Cita"
+            FontSize="24"
+            TextColor="#198B89"
+            FontAttributes="Bold"
+            HorizontalOptions="Center"
+            Margin="0,0,0,20" />
+
+            <!-- Servicio -->
+            <Label
+            Text="Servicio:"
+            FontSize="16"
+            TextColor="black"
+            FontAttributes="Bold"
+            Margin="0,25,0,5" />
+            <Frame BackgroundColor="#D5F2F8" Padding="5" CornerRadius="10" HasShadow="False" BorderColor="Transparent" Margin="0,0,0,20">
+                <Picker x:Name="doctorPicker"
+           Title="Selecciona un Servicio"
+           SelectedIndexChanged="OnDoctorSelectedIndexChanged"
+           BackgroundColor="#D5F2F8" 
+           TextColor="#3C949E" />
+            </Frame>
+
+
+
+         
+
+            <!-- Fecha -->
+            <Label
+            Text="Fecha:"
+            FontSize="16"
+            TextColor="#000000"
+            FontAttributes="Bold"
+            Margin="0,25,0,0" />
+            <Frame BackgroundColor="#D5F2F8" Padding="5" CornerRadius="10" HasShadow="False" BorderColor="Transparent" Margin="0,0,0,20">
+                <DatePicker x:Name="appointmentDatePicker"
+              BackgroundColor="#D5F2F8"
+              TextColor="#3C949E" />
+            </Frame>
+
+
+            <!-- Hora -->
+            <Label
+            Text="Reason:"
+            FontSize="16"
+            TextColor="#000000"
+            FontAttributes="Bold"
+            Margin="0,25,0,0" />
+
+            <Frame BackgroundColor="#D5F2F8" Padding="5" CornerRadius="10" HasShadow="False" BorderColor="Transparent" Margin="0,0,0,20">
+                <Picker x:Name="ReasonPicker"
+          Title="Selecciona un Tipo de Consulta"
+          BackgroundColor="#D5F2F8" 
+          TextColor="#3C949E">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Consulta Médica</x:String>
+                            <x:String>Examen Médico</x:String>
+                            <x:String>Pedido de Medicamentos</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </Frame>
+
+            <!-- Razón -->
+            <Label
+            Text="Razón:"
+            FontSize="16"
+            TextColor="#000000"
+            FontAttributes="Bold"
+            Margin="0,25,0,5" />
+
+            <Editor x:Name="notesEditor"
+       Placeholder="Añadir notas (opcional)"
+            BackgroundColor="#D5F2F8"
+       AutoSize="TextChanges"
+       TextColor="#3C949E"
+                       Margin="0,0,0,50"/>
+            
+
+
+            <!-- Botón para crear la cita -->
+            <Button Text="Crear Cita"
+       BackgroundColor="#3C949E" 
+       TextColor="White"
+       WidthRequest="150"
+       HeightRequest="40"
+       HorizontalOptions="Center"
+       Clicked="OnCreateAppointmentClicked" />
+
+
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentView>

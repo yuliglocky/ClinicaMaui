@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ClinicalUtp.views.HomePage"
+             xmlns:local="clr-namespace:ClinicalUtp.viewModels"
+             Background="White"
+             Shell.NavBarIsVisible="False">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="SelectedButtonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#0E4E4D"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto,Auto,*" ColumnDefinitions="250,*">
+        <!-- Navbar -->
+        <Grid Grid.Row="0" Grid.ColumnSpan="2" BackgroundColor="#09302F" HeightRequest="60">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Título o logo -->
+            
+            <!-- Coloca el label en la primera columna -->
+
+            <Image Source="logocli.png" 
+           VerticalOptions="Center" 
+                HorizontalOptions="Start"
+            
+                WidthRequest="40" 
+           HeightRequest="40" 
+           Margin="0,10,20,0" 
+                />
+
+            <Label Text="ClinicalUtp" 
+VerticalOptions="Center" 
+HorizontalOptions="Start" 
+FontAttributes="Bold" 
+FontSize="30"
+TextColor="White"
+Margin="45,0,0,0" 
+Grid.Column="0" />
+            <!-- Botones de acciones -->
+            <HorizontalStackLayout Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center" Spacing="10" Margin="0,0,20,0">
+                <ImageButton Source="citas.png" 
+                 WidthRequest="40" 
+                 HeightRequest="40" 
+                 CornerRadius="20" 
+               
+                 HorizontalOptions="Center" 
+                 VerticalOptions="Center" 
+                Clicked="AppointmentAprobada" />
+
+                <ImageButton Source="contacto.png" 
+                 WidthRequest="40" 
+                 HeightRequest="40" 
+                 CornerRadius="20" 
+                 Clicked="Contact" 
+                 HorizontalOptions="Center" 
+                 VerticalOptions="Center" 
+                 />
+
+                <ImageButton Source="user.png" 
+                 WidthRequest="40" 
+                 HeightRequest="40" 
+                 CornerRadius="20" 
+                 Clicked="Profile"       
+                            
+                 HorizontalOptions="Center" 
+                 VerticalOptions="Center" 
+                  />
+            </HorizontalStackLayout>
+
+        </Grid>
+        <!-- Menú lateral -->
+        <StackLayout Grid.Row="2" Grid.Column="0" BackgroundColor="#0E4E4D" Padding="10" Spacing="20">
+            
+
+           
+
+            <!-- Botón Citas pendientes -->
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Start" VerticalOptions="Start" Spacing="10">
+                <Image Source="pendientes.png" WidthRequest="30" HeightRequest="30" VerticalOptions="Center" />
+                <Button Text="Citas pendientes"
+                Clicked="AppointmentPendiente" 
+                BackgroundColor="Transparent"
+                TextColor="White"
+                FontAttributes="Bold"
+                HorizontalOptions="Start" />
+            </StackLayout>
+
+            <!-- Botón Medicamentos -->
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Start" VerticalOptions="Start" Spacing="10">
+                <Image Source="medicine.png" WidthRequest="30" HeightRequest="30" VerticalOptions="Center" />
+                <Button Text="Medicamentos"
+                Clicked="MedicinesDisponible" 
+                BackgroundColor="Transparent"
+                TextColor="White"
+                FontAttributes="Bold"
+                HorizontalOptions="Start" />
+            </StackLayout>
+
+            <!-- Botón Mis citas -->
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Start" VerticalOptions="Start" Spacing="10">
+                <Image Source="donantes.png" WidthRequest="30" HeightRequest="30" VerticalOptions="Center" />
+                <Button Text="Donantes"
+                Clicked="clickDonantes" 
+                BackgroundColor="Transparent"
+                TextColor="White"
+                FontAttributes="Bold"
+                HorizontalOptions="Start" />
+            </StackLayout>
+        </StackLayout>
+
+
+        <!-- Área de contenido dinámico -->
+        <ContentView Grid.Row="2" Grid.Column="1" x:Name="DynamicContentArea"   Background="White">
+            <Label Text="Bienvenido a ClinicalUtp"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   FontSize="18"
+                   TextColor="White" />
+        </ContentView>
+    </Grid>
+</ContentPage>

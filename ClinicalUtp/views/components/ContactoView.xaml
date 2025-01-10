@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ClinicalUtp.views.components.ContactoView">
+    <ScrollView>
+        <StackLayout Padding="20" Margin="15">
+       
+        
+
+            <!-- Mapa o imagen de fondo -->
+            <Image Source="cap.png" Aspect="AspectFill" Margin="0,15" 
+               HorizontalOptions="FillAndExpand" HeightRequest="200"/>
+
+            <!-- Mensaje superpuesto en el mapa -->
+            <Frame BackgroundColor="White" Padding="10" CornerRadius="10"
+               HorizontalOptions="Center" Margin="0,-50,0,10" BorderColor="Transparent">
+                <StackLayout>
+                    <Label Text="¡Visítanos!" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="Black" />
+                    <Label Text="Estaremos Felices de Atenderte" HorizontalTextAlignment="Center" TextColor="Black" />
+                </StackLayout>
+            </Frame>
+
+            <!-- Sección de información de contacto -->
+            <StackLayout Spacing="10">
+                <!-- Dirección -->
+                <Grid Padding="25" ColumnDefinitions="Auto, *" RowSpacing="5">
+                    <Image Source="ubi.png" WidthRequest="30" HeightRequest="30" VerticalOptions="Center" />
+                    <StackLayout Grid.Column="1" Margin="30">
+                        <Label Text="Dirección:" FontAttributes="Bold" FontSize="Small"  TextColor="Black" />
+                        <Label Text="Universidad Tecnológica de Panamá, Campus Metropolitano" 
+                           FontSize="Small" LineBreakMode="WordWrap"  TextColor="Black" />
+                    </StackLayout>
+                </Grid>
+
+                <!-- Teléfono -->
+                <Grid Padding="25" ColumnDefinitions="Auto, *" RowSpacing="5">
+                    <Image Source="phone.png" WidthRequest="30" HeightRequest="30" VerticalOptions="Center" />
+                    <StackLayout Grid.Column="1" Margin="30">
+                        <Label Text="Teléfono:" FontAttributes="Bold" FontSize="Small"  TextColor="Black" />
+                        <Label Text="6585-5899" FontSize="Small"  TextColor="Black"/>
+                    </StackLayout>
+                </Grid>
+
+                <!-- Correo Electrónico -->
+                <Grid Padding="25" ColumnDefinitions="Auto, *" RowSpacing="5">
+                    <Image Source="carta.png" WidthRequest="30" HeightRequest="30" VerticalOptions="Center" />
+                    <StackLayout Grid.Column="1" Margin="30">
+                        <Label Text="Correo Electrónico:" FontAttributes="Bold" FontSize="Small"  TextColor="Black" />
+                        <Label Text="Clinica.univ@utp.ac.pa" FontSize="Small"  TextColor="Black" />
+                    </StackLayout>
+                </Grid>
+
+                <!-- Horario de Atención -->
+                <Grid Padding="25" ColumnDefinitions="Auto, *" RowSpacing="5">
+                    <Image Source="reloj.png" WidthRequest="30" HeightRequest="30" VerticalOptions="Center" />
+                    <StackLayout Grid.Column="1" Margin="30">
+                        <Label Text="Horario de Atención:" FontAttributes="Bold" FontSize="Small"  TextColor="Black"/>
+                        <Label Text="Lunes a Viernes de 8:00AM a 5:00PM" FontSize="Small"  TextColor="Black" />
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</ContentView>

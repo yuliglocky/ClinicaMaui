@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ClinicalUtp.views.addAppointments"
+           >
+
+    <VerticalStackLayout Padding="20">
+        <!-- Picker para seleccionar el doctor -->
+        <Label Text="Selecciona un Doctor" FontSize="Medium" />
+        <Picker x:Name="DoctorPicker" Title="Doctor"
+                ItemDisplayBinding="{Binding Servicio}" />
+
+        <!-- Otros campos de la cita (Ejemplo de un campo de razón de cita) -->
+        <Label Text="Razón de la Cita" FontSize="Medium" />
+        <Entry x:Name="ReasonEntry" Placeholder="Motivo de la cita" />
+
+        <!-- Botón para crear la cita -->
+        <Button Text="Crear Cita" Clicked="OnCreateAppointmentClicked" />
+    </VerticalStackLayout>
+</ContentPage>

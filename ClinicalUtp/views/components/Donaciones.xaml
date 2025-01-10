@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ClinicalUtp.views.components.Donaciones">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <!-- Logo e información -->
+            <Image Source="dona1.png"
+                   HeightRequest="200"
+                   Aspect="AspectFit"
+                   HorizontalOptions="Center" />
+
+           
+            <!-- Información del Donante -->
+            <VerticalStackLayout Spacing="10">
+               
+            </VerticalStackLayout>
+            <!-- Historial de Donaciones -->
+            <Frame BackgroundColor="White"
+                   CornerRadius="10"
+                   Padding="10"
+                   BorderColor="LightGray">
+                <VerticalStackLayout>
+                    <Label Text="Historial de donaciones"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           TextColor="Black"
+                           HorizontalOptions="Start" />
+                    <CollectionView ItemsSource="{Binding Donations}" Margin="10">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame CornerRadius="10" Padding="10" Margin="5" BorderColor="LightGray" BackgroundColor="White">
+                                    <StackLayout>
+                                        <!-- Mostrar la fecha de creación -->
+                                        <Label Text="{Binding CreatedAt, StringFormat='Fecha: {0:dd/MM/yyyy HH:mm}'}" 
+                           FontSize="16" 
+                           TextColor="Black" />
+                                    </StackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentView>

@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ClinicalUtp.MainPage"
+             BackgroundColor="Transparent"
+         >
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#F1F9FB" Offset="0.1"/>
+            <GradientStop Color="#D5F2F8" Offset="0.5"/>
+            <GradientStop Color="#9BD8DB" Offset="0.7"/>
+            <GradientStop Color="#3C949E" Offset="1.0"/>
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="20" Padding="30">
+
+        <Image Source="logocli.png" 
+               WidthRequest="100"
+               HeightRequest="100"
+               HorizontalOptions="Center" />
+
+        <!-- Título -->
+        <Label Text="Login"
+               FontSize="24"
+               HorizontalTextAlignment="Center"
+               TextColor="#024F55"
+               FontAttributes="Bold"/>
+
+        <!-- Campo de Email -->
+        <Frame BackgroundColor="#D5F2F8"
+               CornerRadius="25"
+               Padding="0"
+               HasShadow="False"
+               BorderColor="Transparent"
+               HeightRequest="50"
+               WidthRequest="250">
+            <Entry Placeholder="Email"
+                   PlaceholderColor="#3C949E"
+                   Text="{Binding Email}"      
+                   TextColor="#3C949E"
+                   BackgroundColor="Transparent"
+                 />
+        </Frame>
+
+        <!-- Campo de Password -->
+        <Frame BackgroundColor="#D5F2F8"
+               CornerRadius="25"
+               Padding="0"
+               HasShadow="False"
+               BorderColor="Transparent"
+               HeightRequest="50"
+               WidthRequest="250">
+            <Entry Placeholder="Password"
+                   IsPassword="True"
+                   PlaceholderColor="#3C949E"
+                   Text="{Binding Password}"  
+                   TextColor="#3C949E"
+                   BackgroundColor="Transparent"
+                 />
+        </Frame>
+
+        <!-- Botón de Login -->
+        <Button Text="LOGIN"
+                WidthRequest="250"
+                HeightRequest="50"
+                BackgroundColor="#024F55"
+                TextColor="White"
+                CornerRadius="25"
+                FontAttributes="Bold"
+                Command="{Binding LoginCommand}"  
+            />
+
+      
+        <Label Text="create account"
+                 HorizontalTextAlignment="Center"
+               TextColor="#024F55">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnLabelTapped" />
+            </Label.GestureRecognizers>
+        </Label>
+    </VerticalStackLayout>
+</ContentPage>

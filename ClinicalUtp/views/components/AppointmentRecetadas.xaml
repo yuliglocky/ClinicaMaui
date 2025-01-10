@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ClinicalUtp.views.components.AppointmentRecetadas"
+              BackgroundColor="Transparent" >
+    <ScrollView>
+        <VerticalStackLayout Padding="10" Spacing="20">
+
+            <Frame Padding="10"
+                   BackgroundColor="#024F55"
+                   HeightRequest="60"
+                   CornerRadius="20"
+                   BorderColor="#024F55"
+                   HasShadow="True"
+                   HorizontalOptions="FillAndExpand"
+                   VerticalOptions="Center">
+                <HorizontalStackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                    <!-- Imagen a la izquierda -->
+                    <Image Source="pendientes.png" 
+                           WidthRequest="40" 
+                           HeightRequest="40" 
+                           Aspect="AspectFit"
+                           VerticalOptions="Center" />
+
+                    <!-- Título en el centro -->
+                    <Label Text="Citas pendientes " 
+                           FontSize="20" 
+                           FontAttributes="Bold" 
+                           TextColor="White"
+                           HorizontalOptions="CenterAndExpand"
+                           VerticalOptions="Center" />
+                </HorizontalStackLayout>
+            </Frame>
+
+            <!-- Contenedor flexible para las tarjetas -->
+            <FlexLayout Wrap="Wrap" 
+                        AlignItems="Start"
+                        JustifyContent="Start"
+                        Direction="Row"
+                        BindableLayout.ItemsSource="{Binding Appointments}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <!-- Frame para cada cita -->
+                        <Frame Padding="10" 
+                               CornerRadius="10"
+                               HasShadow="True"
+                               HeightRequest="150" 
+                               BackgroundColor="#D5F2F8"
+                               BorderColor="#024F55"
+                               WidthRequest="340"
+                               Margin="5">
+                            <VerticalStackLayout Spacing="10" 
+                                                 HorizontalOptions="Fill" 
+                                                 VerticalOptions="Center">
+                                <!-- Mostrar los datos de la cita -->
+                                <Label Text="{Binding Reason}" 
+                                       FontSize="12" 
+                                       TextColor="#024F55" 
+                                       HorizontalOptions="Center" />
+                                <Label Text="{Binding AppointmentDate}" 
+                                       FontSize="10" 
+                                       TextColor="#024F55" 
+                                       HorizontalOptions="Center" />
+                                <!-- Botones -->
+                                <HorizontalStackLayout HorizontalOptions="Center" 
+                                                       Spacing="10">
+                                    <!-- Botón verde -->
+                                    <Button Text="✔ Aprobar" 
+                                            WidthRequest="110" 
+                                            HeightRequest="30"
+                                            BackgroundColor="#024F55" 
+                                              TextColor="White"
+                                            CornerRadius="10"
+                                            FontAttributes="Bold"
+                                            Clicked="OnApproveButtonClicked"
+                                            CommandParameter="{Binding Id}" />
+
+                                    <!-- Botón rojo -->
+                                    <Button Text="✘ Rechazar" 
+                                            WidthRequest="100" 
+                                            HeightRequest="30"
+                                            BackgroundColor="#D15866" 
+                                              TextColor="White"
+                                            CornerRadius="10"
+                                            FontAttributes="Bold"
+                                            Clicked="OnRejectButtonClicked" 
+                                            CommandParameter="{Binding Id}" />
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </FlexLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentView>

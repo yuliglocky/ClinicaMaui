@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ClinicalUtp.views.components.HomeContentDoctor">
+    <Grid>
+        <!-- Define Rows: 1 para el banner, y 3 para las tarjetas -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Banner -->
+            <RowDefinition Height="*"/>
+            <!-- Tarjeta 1 -->
+            <RowDefinition Height="*"/>
+            <!-- Tarjeta 2 -->
+            <RowDefinition Height="*"/>
+            <!-- Tarjeta 3 -->
+        </Grid.RowDefinitions>
+
+        <!-- Banner -->
+        <Frame Grid.Row="0"
+               BackgroundColor="#2196F3"
+               Padding="20"
+               CornerRadius="0"
+               HorizontalOptions="FillAndExpand"
+               VerticalOptions="Start">
+            <Label Text="Doctor's Home"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
+        </Frame>
+
+        <!-- Tarjeta 1 -->
+        <Frame Grid.Row="1"
+               BorderColor="#B0BEC5"
+               CornerRadius="10"
+               BackgroundColor="White"
+               Margin="10"
+               Padding="20">
+            <StackLayout>
+                <Label Text="Card 1"
+                       FontSize="18"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center"/>
+                <Image Source="card_image_1.png"
+                       HeightRequest="150"
+                       HorizontalOptions="Center"/>
+            </StackLayout>
+        </Frame>
+
+        <!-- Tarjeta 2 -->
+        <Frame Grid.Row="2"
+               BorderColor="#B0BEC5"
+               CornerRadius="10"
+               BackgroundColor="White"
+               Margin="10"
+               Padding="20">
+            <StackLayout>
+                <Label Text="Card 2"
+                       FontSize="18"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center"/>
+                <Image Source="card_image_2.png"
+                       HeightRequest="150"
+                       HorizontalOptions="Center"/>
+            </StackLayout>
+        </Frame>
+
+        <!-- Tarjeta 3 -->
+        <Frame Grid.Row="3"
+               BorderColor="#B0BEC5"
+               CornerRadius="10"
+               BackgroundColor="White"
+               Margin="10"
+               Padding="20">
+            <StackLayout>
+                <Label Text="Card 3"
+                       FontSize="18"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center"/>
+                <Image Source="card_image_3.png"
+                       HeightRequest="150"
+                       HorizontalOptions="Center"/>
+            </StackLayout>
+        </Frame>
+    </Grid>
+</ContentView>

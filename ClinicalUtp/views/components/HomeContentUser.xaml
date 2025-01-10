@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ClinicalUtp.views.components.HomeContentUser">
+    <VerticalStackLayout Padding="10" Spacing="20">
+        <!-- Texto -->
+        <Label 
+  FontSize="13"
+  FontAttributes="Bold"
+  TextColor="#00796B"
+  HorizontalOptions="End"
+  VerticalOptions="Center" />
+        <Frame BackgroundColor="#198B89" 
+           HasShadow="False" 
+           CornerRadius="20" 
+           Padding="0" 
+                 BorderColor="Transparent"
+           HorizontalOptions="FillAndExpand" 
+           VerticalOptions="FillAndExpand">
+            
+            <StackLayout Orientation="Horizontal" Spacing="20" HorizontalOptions="Center" VerticalOptions="Center">
+
+                <!-- Imagen -->
+                <Image Source="servicios.png"
+               WidthRequest="150"
+               HeightRequest="150"
+               Aspect="AspectFit"
+               HorizontalOptions="Start"
+               VerticalOptions="Center" />
+
+                <!-- Contenedor de texto y botón -->
+                <StackLayout Orientation="Vertical" Spacing="9" HorizontalOptions="End" VerticalOptions="Center">
+
+                    <!-- Texto -->
+                    <Label Text="¿Quieres ver los servicios?"
+                   FontSize="13"
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   HorizontalOptions="End"
+                   VerticalOptions="Center" />
+
+                    <!-- Botón -->
+                    <Button Text="Ver aquí"
+                    BackgroundColor="White"
+                    TextColor="#00796B"
+                    WidthRequest="120"
+                    HeightRequest="40"
+                    CornerRadius="10"
+                        Clicked="Services" 
+                    HorizontalOptions="End"
+                    VerticalOptions="Center" />
+
+                </StackLayout>
+
+            </StackLayout>
+        </Frame>
+        <!-- Contenedor de Citas Pendientes -->
+        <Frame Padding="10" 
+       BackgroundColor="Transparent"
+       HeightRequest="50"
+       CornerRadius="20"
+       BorderColor="Transparent"
+       HasShadow="True"
+       VerticalOptions="Center">
+            <HorizontalStackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center" Spacing="10">
+                
+                <Label Text="Citas Agendadas" 
+               FontSize="16" 
+               FontAttributes="Bold" 
+               TextColor="#024F55"
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="Center" />
+            </HorizontalStackLayout>
+        </Frame>
+
+        <!-- ScrollView Horizontal para Citas Pendientes -->
+        <ScrollView Orientation="Horizontal" Padding="0,5">
+            <FlexLayout Wrap="NoWrap" 
+                AlignItems="Start"
+                JustifyContent="Start"
+                Direction="Row"
+                BindableLayout.ItemsSource="{Binding PendingAppointments}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="8" 
+                      BackgroundColor="#C8F9EF"
+                       CornerRadius="8"
+                        HasShadow="True"
+                       BorderColor="LightGrey"
+                       HeightRequest="120" 
+                       WidthRequest="200"
+                       Margin="5">
+                            <StackLayout Spacing="10" 
+                                 HorizontalOptions="Fill" 
+                                 VerticalOptions="Center">
+                                <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="10">
+                                    <Image Source="citasce.png" 
+                                   WidthRequest="30" 
+                                   HeightRequest="30" 
+                                   Aspect="AspectFit" 
+                                   HorizontalOptions="Center" 
+                                   Margin="0,0,5,0" />
+                                    <Label Text="{Binding Reason}" 
+                                   FontSize="14" 
+                                               TextColor="#024F55"
+                                   FontAttributes="Bold" 
+                                   HorizontalOptions="Center" />
+                                </HorizontalStackLayout>
+                                <Label Text="{Binding AppointmentDate}" 
+                               FontSize="12" 
+                                           TextColor="#024F55"
+                               HorizontalOptions="Center" />
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </FlexLayout>
+        </ScrollView>
+
+        <!-- Contenedor de Citas Aprobadas -->
+        <Frame Padding="10" 
+       BackgroundColor="Transparent"
+ HeightRequest="50"
+ CornerRadius="20"
+ BorderColor="Transparent"
+       HasShadow="True"
+       VerticalOptions="Center">
+            <HorizontalStackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center" Spacing="10">
+             
+
+                <Label Text="Citas proximas" 
+               FontSize="16" 
+               FontAttributes="Bold" 
+                  TextColor="#024F55"
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="Center" />
+            </HorizontalStackLayout>
+        </Frame>
+
+        <!-- ScrollView Horizontal para Citas Aprobadas -->
+        <ScrollView Orientation="Horizontal" Padding="0,5">
+            <FlexLayout Wrap="NoWrap" 
+                AlignItems="Start"
+                JustifyContent="Start"
+                Direction="Row"
+                BindableLayout.ItemsSource="{Binding ApprovedAppointments}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="8" 
+                       BackgroundColor="#C8F9EF"
+                       CornerRadius="8"
+                       HasShadow="True"
+                       BorderColor="LightGrey"
+                       HeightRequest="120" 
+                       WidthRequest="200"
+                       Margin="5">
+                            <StackLayout Spacing="10" 
+                                 HorizontalOptions="Fill" 
+                                 VerticalOptions="Center">
+                                <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="10">
+                                    <Image Source="citasce.png" 
+                                   WidthRequest="30" 
+                                   HeightRequest="30" 
+                                   Aspect="AspectFit" 
+                                   HorizontalOptions="Center" 
+                                   Margin="0,0,5,0" />
+                                    <Label Text="{Binding Reason}" 
+                                   FontSize="14" 
+                                   FontAttributes="Bold" 
+                                               TextColor="#024F55"
+                                   HorizontalOptions="Center" />
+                                    
+                                </HorizontalStackLayout>
+                                <Label Text="{Binding AppointmentDate}" 
+                                           TextColor="#024F55"
+                               FontSize="12" 
+                               HorizontalOptions="Center" />
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </FlexLayout>
+        </ScrollView>
+
+
+    </VerticalStackLayout>
+</ContentView>

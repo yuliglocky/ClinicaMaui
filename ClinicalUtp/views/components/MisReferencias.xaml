@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ClinicalUtp.views.components.MisReferencias">
+    <VerticalStackLayout Padding="20" Spacing="10">
+        <!-- Título de la sección -->
+        <Label Text="Mis Referencias"
+           FontSize="24"
+           FontAttributes="Bold"
+           HorizontalOptions="Center"
+           TextColor="#024F55"
+           Margin="0,0,0,20"/>
+
+        <!-- Lista de referencias -->
+        <CollectionView ItemsSource="{Binding References}" SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Padding="10" Margin="10,15,10,15"
+                        BorderColor="Gray" CornerRadius="8"
+                       BackgroundColor="#D5F2F8">
+                        <VerticalStackLayout>
+                            <!-- Nombre del doctor -->
+                            <Label Text="{Binding DoctorName}"
+                               FontSize="18"
+                               FontAttributes="Bold" 
+                               TextColor="Black"/>
+
+                            <!-- Fecha de creación -->
+                            <Label Text="{Binding CreatedAt, StringFormat='Creado el: {0:dd/MM/yyyy}'}"
+                               FontSize="14"
+                               TextColor="Black"/>
+
+                            <!-- Botón para enviar PDF -->
+                            <Button Text="Enviar PDF"
+                                BackgroundColor="#024F55"
+                                TextColor="White"
+                                CommandParameter="{Binding .}"
+                                Clicked="OnSendPdfClicked" />
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+
+</ContentView>
